@@ -1,6 +1,10 @@
 import os
 from pathlib import Path
 
+
+
+#from clothing_crm.urls import urlpatterns
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,7 +14,15 @@ SECRET_KEY = 'django-insecure-your-secret-key-here'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '127.0.0.1',         # localhost uchun
+    'localhost',         # agarda browserda localhost deb kirsangiz
+    'clouthingwms.uz',   # real domeningiz
+    'www.clouthingwms.uz',
+    '51.21.243.213'      # server IP manzilingiz
+]
+
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -95,7 +107,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']  # bu sizdagi "source" papka
-STATIC_ROOT = BASE_DIR / 'staticfiles'    # bu esa target papka (serve qilinadigan)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    # bu esa target papka (serve qilinadigan)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -111,4 +123,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'dashboard:index'
 LOGOUT_REDIRECT_URL = 'accounts:login'
+
+
 
